@@ -1,0 +1,41 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "children",
+    "definitions": {
+        "align": {
+            "type": "string",
+            "description": "设置布局器的对齐方式"
+        },
+        "policy": {
+            "enum": [
+                "expand",
+                "max",
+                "min",
+                "prefer",
+                "minexpand",
+                "ignored"
+            ]
+        },
+        "layout": {
+            "type": "object",
+            "properties": {
+                "class": {
+                    "enum": [
+                        "QGridLayout",
+                        "QHBoxLayout",
+                        "QVBoxLayout",
+                        "QStackedLayout"
+                    ]
+                },
+                "attributes":{
+                    "$ref":"./attributes.json"
+                },
+                "id":{
+                    "type":"string"
+                }
+            },
+            "additionalProperties": false,
+            "description": "布局器，如果子对象是一个布局，请勿添加该属性"
+        }
+    }
+}

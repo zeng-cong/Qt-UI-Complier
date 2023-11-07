@@ -1,0 +1,116 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "attributes",
+    "description": "用于设置属性,例如文本，大小，图片等",
+    "type": "object",
+    "properties": {
+        "size": {
+            "type": "object",
+            "properties": {
+                "width": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "height": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "min-height": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "min-width": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "max-height": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "max-width": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "fixed-height": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "fixed-width": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "policy": {
+                    "type": "object",
+                    "properties": {
+                        "hor": {
+                            "$ref": "layout.json#/definitions/policy"
+                        },
+                        "ver": {
+                            "$ref": "layout.json#/definitions/policy"
+                        }
+                    },
+                    "description": "用于设置子窗口的伸缩策略"
+                }
+            },
+            "description": "设置界面尺寸属性"
+        },
+        "text": {
+            "type": "string",
+            "description": "用于设置文本"
+        },
+        "spacing": {
+            "type": [
+                "integer",
+                "object"
+            ],
+            "properties": {
+                "hor": {
+                    "type": "integer"
+                },
+                "ver": {
+                    "type": "integer"
+                }
+            },
+            "description": "用于设置布局器中每个子窗口之间的间距"
+        },
+        "margins": {
+            "type": "string",
+            "description": "设置布局的外边框，格式为\"1(左),2(上),3(右),4(下)\""
+        },
+        "align": {
+            "$ref": "layout.json#/definitions/align"
+        },
+        "properties": {
+            "type": "object",
+            "description": "用于设置QT属性"
+        },
+        "pixmap": {
+            "type": "string",
+            "description": "用于设置图片"
+        },
+        "wordWrap": {
+            "type": "boolean",
+            "description": "用于设置label是否换行"
+        },
+        "name": {
+            "type": "string",
+            "description": "用于给对象命名(setObjectName)"
+        },
+        "orientaion": {
+            "type": "string",
+            "description": "用于设置滑块的方向"
+        },
+        "title": {
+            "type": "string",
+            "description": "用于设置标题"
+        },
+        "icon": {
+            "type": "string",
+            "description": "用于设置输入框，按钮，标签等的图标"
+        },
+        "placeholder": {
+            "type": "string",
+            "description": "设置输入框的占位"
+        }
+    }
+}

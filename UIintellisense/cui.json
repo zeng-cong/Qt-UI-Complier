@@ -1,0 +1,64 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "UiFile",
+    "description": "自定义UI文件，通过UIComplier.js编译",
+    "definitions": {},
+    "type": "object",
+    "properties": {
+        "include": {
+            "type": "object",
+            "description": "需要添加的头文件",
+            "properties": {
+                "lib": {
+                    "type": "array",
+                    "description": "系统头文件，或者库头文件(使用尖括号引用的头文件)",
+                    "items": {
+                        "type": "string"
+                    },
+                    "minItems": 1
+                },
+                "user": {
+                    "type": "array",
+                    "description": "用户自定义头文件(使用双引号引用的头文件)",
+                    "items": {
+                        "type": "string"
+                    },
+                    "minItems": 1
+                }
+            },
+            "additionalProperties": false
+        },
+        "body": {
+            "type": "object",
+            "description": "界面主体",
+            "properties": {
+                "layout": {
+                    "$ref": "layout.json#/definitions/layout"
+                },
+                "attributes": {
+                    "$ref": "./attributes.json"
+                },
+                "children": {
+                    "$ref": "./children.json"
+                },
+                "##comment":{
+                    "type":"string"
+                }
+            },
+            "additionalProperties": false
+        },
+        "elements": {
+            "type": "object",
+            "additionalProperties": {
+                "$ref": "./children.json#/definitions/child"
+            }
+        },
+        "templates": {
+            "type": "object"
+        }
+    },
+    "required": [
+        "body"
+    ],
+    "additionalProperties": false
+}

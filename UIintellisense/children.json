@@ -1,0 +1,85 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "children",
+    "description": "用于描述子窗口，子布局",
+    "type": "array",
+    "definitions": {
+        "child": {
+            "type": "object",
+            "properties": {
+                "class": {
+                    "type": "string",
+                    "description": "类名,(注意:template,element,class三个属性互斥)"
+                },
+                "element": {
+                    "type": "string",
+                    "description": "elements预定义的元素,(注意:template,element,class三个属性互斥)"
+                },
+                "layout": {
+                    "$ref": "layout.json#/definitions/layout"
+                },
+                "attributes": {
+                    "$ref": "./attributes.json"
+                },
+                "layoutProperties": {
+                    "type": "object",
+                    "description": "设置当前所在布局（指的是父对象的布局，不是当前layout所指）的一些属性，例如需要设置这个对象在布局中的对齐方式",
+                    "properties": {
+                        "align": {
+                            "$ref": "layout.json#/definitions/align"
+                        },
+                        "row": {
+                            "anyOf": [
+                                {
+                                    "type": "string",
+                                    "pattern": "next"
+                                },
+                                {
+                                    "type": "integer"
+                                }
+                            ],
+                            "description": "QGridLayout专用"
+                        },
+                        "column": {
+                            "type": "integer",
+                            "description": "QGridLayout专用"
+                        },
+                        "width": {
+                            "type": "integer",
+                            "description": "QGridLayout专用"
+                        },
+                        "height": {
+                            "type": "integer",
+                            "description": "QGridLayout专用"
+                        }
+                    },
+                    "additionalProperties": false
+                },
+                "children": {
+                    "$ref": "#"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "如果有该属性，表示这是具名对象，变量指针将是成员变量"
+                },
+                "##comment": {
+                    "type": "string",
+                    "description": "用于注释"
+                },
+                "template": {
+                    "type": "string",
+                    "description": "templates预定义的模板,(注意:template,element,class三个属性互斥)"
+                },
+                "paramters": {
+                    "type": "object",
+                    "description": "替换模板用的参数"
+                }
+            },
+            "additionalProperties": false
+        }
+    },
+    "items": {
+        "$ref": "#/definitions/child"
+    },
+    "minItems": 1
+}
