@@ -1,6 +1,5 @@
 const fs = require("fs");
 const path = require("path");
-const constants = require("./constants.js");
 const alignMap = {
     "left": "Qt::AlignLeft",
     "right": "Qt::AlignRight",
@@ -541,7 +540,7 @@ function parseUIFile(uiFile, dstdir) {
 
 if (require.main == module) {
     let uiFiles = process.argv.slice(2);
-    let dstdir = path.join(constants.includeDir, "UI");
+    let dstdir = path.join(process.cwd(), "UI");
     if (!fs.existsSync(dstdir)) {
         fs.mkdirSync(dstdir, { recursive: true });
     }
